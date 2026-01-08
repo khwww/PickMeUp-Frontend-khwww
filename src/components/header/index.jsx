@@ -1,7 +1,6 @@
-import React from 'react';
 import Logo from '@/assets/logo.svg?react';
-import { FaMoon } from 'react-icons/fa';
-import { IoSunny } from 'react-icons/io5';
+import MoonIcon from '@/assets/moon.svg?react';
+import SunIcon from '@/assets/sun.svg?react';
 
 const Header = ({ toggleDarkMode, isDarkMode }) => {
   return (
@@ -11,7 +10,7 @@ const Header = ({ toggleDarkMode, isDarkMode }) => {
       </h1>
       {/* 다크 모드 버튼 */}
       <button onClick={toggleDarkMode} className="p-2 dark:text-white">
-        {isDarkMode ? <IoSunny size={24} /> : <FaMoon size={24} />}
+        {isDarkMode ? <SunIcon className="h-6 w-6" /> : <MoonIcon className="h-6 w-6" />}
       </button>
     </header>
   );
