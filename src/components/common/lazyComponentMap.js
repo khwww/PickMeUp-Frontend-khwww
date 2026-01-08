@@ -1,11 +1,11 @@
 import { lazy } from 'react';
 
 export const fadeImportMap = {
-  PolicySummary: lazy(() => import('../policySummary')),
-  Map: lazy(() => import('../map/index.jsx')),
-  Vote: lazy(() => import('../vote')),
-  ApprovalRating: lazy(() => import('../approvalRating')),
-  CheerSection: lazy(() => import('../cheering')),
-  VoteCount: lazy(() => import('../voteCount')),
-  ShareSection: lazy(() => import('../share/index.jsx')),
+  PolicySummary: lazy(() => import(/* webpackPrefetch: true */ '../policySummary')),
+  Map: lazy(() => import(/* webpackPrefetch: true */ '../map')),
+  Vote: lazy(() => import(/* webpackPrefetch: true */ '../vote')),
+  ApprovalRating: lazy(() => import(/* webpackPrefetch: true */ '../approvalRating')),
+  CheerSection: lazy(() => import(/* webpackPrefetch: true */ '../cheering')),
+  VoteCount: lazy(() => import(/* webpackPrefetch: true */ '../voteCount')),
+  ShareSection: lazy(() => import(/* webpackPrefetch: true */ '../share')),
 };
