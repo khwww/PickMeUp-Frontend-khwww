@@ -37,7 +37,7 @@ const CheerForm = ({ onAddMessage }) => {
     if (!message.trim() || !candidateId) return;
     setIsSubmitting(true);
 
-    const optimisticMessage = {
+    const newMessage = {
       candidate: candidateId,
       text: message,
       content: message,
@@ -45,14 +45,15 @@ const CheerForm = ({ onAddMessage }) => {
       uid: uuidv4(),
     };
 
-    onAddMessage(optimisticMessage);
+    const currentMessage = message;
 
     try {
-      await postCheerMessage({
-        candidate: candidateId,
-        content: message,
+      await onAddMessage(newMessage, async () => {
+        await postCheerMessage({
+          candidate: candidateId,
+          content: currentMessage,
+        });
       });
-
       toast.success('응원 메시지가 전송되었습니다.');
     } catch (err) {
       console.error('메시지 전송 실패:', err);
