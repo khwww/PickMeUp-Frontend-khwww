@@ -1,20 +1,31 @@
-import { useState } from 'react';
+import { useState, useOptimistic, useTransition } from 'react';
 import CheerForm from './CheerForm';
 import CheerList from './CheerList';
 import CheerTitle from './CheerTitle';
 
 const CheerSection = () => {
   const [messages, setMessages] = useState([]);
+  const [, startTransition] = useTransition();
 
-  const handleAddMessage = (newMessage) => {
-    setMessages((prev) => [newMessage, ...prev]);
+  const [optimisticMessages, addOptimisticMessage] = useOptimistic(
+    messages,
+    (currentMessages, newMessage) => [{ ...newMessage, isPending: true }, ...currentMessages]
+  );
+
+  const handleAddMessage = async (newMessage, submitAction) => {
+    startTransition(async () => {
+      addOptimisticMessage(newMessage);
+
+      await submitAction();
+      setMessages((prev) => [newMessage, ...prev]);
+    });
   };
 
   return (
     <div className="mw-1280 !mb-[72px] flex flex-col items-center md:!mb-52">
       <CheerTitle />
       <CheerForm onAddMessage={handleAddMessage} />
-      <CheerList messages={messages} setMessages={setMessages} />
+      <CheerList messages={optimisticMessages} setMessages={setMessages} />
     </div>
   );
 };
