@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import ChevronDownIcon from '@/assets/icons/chevron-down.svg?react';
+import ChevronUpIcon from '@/assets/icons/chevron-up.svg?react';
 import '../../../styles/policy.css';
 import CategoryIcon from './CategoryIcon';
 
@@ -28,9 +29,9 @@ const PolicyItem = ({ category, items }) => {
           <span className="text-xl font-bold">{category}</span>
         </div>
         {isOpen ? (
-          <FiChevronUp className="text-independent h-6 w-6 dark:text-white" />
+          <ChevronUpIcon className="text-independent h-6 w-6 dark:text-white" />
         ) : (
-          <FiChevronDown className="text-independent h-6 w-6 dark:text-white" />
+          <ChevronDownIcon className="text-independent h-6 w-6 dark:text-white" />
         )}
       </button>
 
@@ -57,8 +58,3 @@ const PolicyItem = ({ category, items }) => {
 };
 
 export default PolicyItem;
-
-//아이콘 패키지 설치
-//npm install react-icons
-
-//공약 항목 > 드롭다운으로

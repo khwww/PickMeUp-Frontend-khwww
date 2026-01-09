@@ -1,6 +1,9 @@
 import '@/styles/policy.css';
 import { useState } from 'react';
-import { FiCheckCircle, FiChevronDown, FiChevronUp, FiXCircle } from 'react-icons/fi';
+import CheckCircleIcon from '@/assets/icons/check-circle.svg?react';
+import ChevronDownIcon from '@/assets/icons/chevron-down.svg?react';
+import ChevronUpIcon from '@/assets/icons/chevron-up.svg?react';
+import XCircleIcon from '@/assets/icons/x-circle.svg?react';
 
 const MapList = () => {
   const data = [
@@ -108,9 +111,9 @@ const IconList = ({ children, iconType }) => {
   const generateIcon = (type) => {
     switch (type) {
       case 'check':
-        return <FiCheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />;
+        return <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />;
       case 'x':
-        return <FiXCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />;
+        return <XCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />;
       case 'dot':
         return (
           <div className="bg-primary mx-1 mt-2.5 h-1 w-1 shrink-0 rounded-full md:h-1.5 md:w-1.5" />
@@ -149,9 +152,9 @@ const DropdownSection = ({ category, items }) => {
       <button onClick={toggleOpen} className="flex w-full items-center justify-between px-3">
         <span className="text-xl font-bold">{category}</span>
         {isOpen ? (
-          <FiChevronUp className="text-independent h-6 w-6 dark:text-white" />
+          <ChevronUpIcon className="text-independent h-6 w-6 dark:text-white" />
         ) : (
-          <FiChevronDown className="text-independent h-6 w-6 dark:text-white" />
+          <ChevronDownIcon className="text-independent h-6 w-6 dark:text-white" />
         )}
       </button>
       <div className={`fade-in-up-wrapper ${isOpen ? 'show' : ''}`}>

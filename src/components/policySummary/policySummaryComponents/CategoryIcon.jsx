@@ -1,12 +1,17 @@
-import { FiBarChart, FiBook, FiMapPin, FiStar, FiUserPlus } from 'react-icons/fi';
-import { MdWork } from 'react-icons/md';
+import BarChartIcon from '@/assets/icons/bar-chart.svg?react';
+import BookIcon from '@/assets/icons/book.svg?react';
+import MapPinIcon from '@/assets/icons/map-pin.svg?react';
+import StarIcon from '@/assets/icons/star.svg?react';
+import UserPlusIcon from '@/assets/icons/user-plus.svg?react';
+import BriefcaseIcon from '@/assets/icons/briefcase.svg?react';
+
 const iconMap = {
-  '주요 공약': { icon: FiStar, color: 'text-yellow-500' },
-  '정치・개헌': { icon: FiBook, color: 'text-purple-500' },
-  '경제・AI': { icon: FiBarChart, color: 'text-green-500' },
-  지역균형발전: { icon: FiMapPin, color: 'text-blue-500' },
-  '청년・주거・일자리': { icon: FiUserPlus, color: 'text-orange-500' },
-  '노동・복지': { icon: MdWork, color: 'text-red-500' },
+  '주요 공약': { icon: StarIcon, color: 'text-yellow-500' },
+  '정치・개헌': { icon: BookIcon, color: 'text-purple-500' },
+  '경제・AI': { icon: BarChartIcon, color: 'text-green-500' },
+  지역균형발전: { icon: MapPinIcon, color: 'text-blue-500' },
+  '청년・주거・일자리': { icon: UserPlusIcon, color: 'text-orange-500' },
+  '노동・복지': { icon: BriefcaseIcon, color: 'text-red-500' },
 };
 
 const CategoryIcon = ({ category }) => {

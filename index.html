@@ -5,6 +5,16 @@
     <link rel="icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- 폰트 서버 미리 연결 및 폰트 미리 로드 -->
+    <link rel="preconnect" href="https://hangeul.pstatic.net" crossorigin />
+    <link
+      rel="preload"
+      href="https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+
     <title>Pick your president</title>
 
     <meta property="og:title" content="Pick your president - 2025 대선 정보 플랫폼" />
@@ -26,12 +36,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <script
-      async
-      defer
-      crossorigin="anonymous"
-      src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v22.0"
-    ></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

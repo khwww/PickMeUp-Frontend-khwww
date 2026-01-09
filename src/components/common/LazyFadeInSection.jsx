@@ -2,10 +2,30 @@ import { motion } from 'framer-motion';
 import { Suspense } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { fadeImportMap } from './lazyComponentMap';
+import {
+  PolicySummarySkeleton,
+  MapSkeleton,
+  VoteSkeleton,
+  ApprovalRatingSkeleton,
+  CheerSectionSkeleton,
+  VoteCountSkeleton,
+  ShareSectionSkeleton,
+} from './Skeleton';
 
 const MotionDiv = motion.div;
 
-const FadeInLazyWrapper = ({ id, componentKey, delay = 0, fallback = null }) => {
+// 컴포넌트별 Skeleton 매핑
+const skeletonMap = {
+  PolicySummary: <PolicySummarySkeleton />,
+  Map: <MapSkeleton />,
+  Vote: <VoteSkeleton />,
+  ApprovalRating: <ApprovalRatingSkeleton />,
+  CheerSection: <CheerSectionSkeleton />,
+  VoteCount: <VoteCountSkeleton />,
+  ShareSection: <ShareSectionSkeleton />,
+};
+
+const FadeInLazyWrapper = ({ id, componentKey, delay = 0 }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -13,6 +33,9 @@ const FadeInLazyWrapper = ({ id, componentKey, delay = 0, fallback = null }) => 
 
   const LazyComponent = fadeImportMap[componentKey];
   if (!LazyComponent) return null;
+
+  // 컴포넌트별 Skeleton 가져오기 (없으면 null)
+  const skeleton = skeletonMap[componentKey] || null;
 
   const getMinHeight = () => {
     const width = window.innerWidth;
@@ -61,7 +84,7 @@ const FadeInLazyWrapper = ({ id, componentKey, delay = 0, fallback = null }) => 
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay }}
         >
-          <Suspense fallback={fallback}>
+          <Suspense fallback={skeleton}>
             <LazyComponent />
           </Suspense>
         </MotionDiv>
